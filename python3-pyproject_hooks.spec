@@ -19,7 +19,7 @@ BuildRequires:	python3-modules >= 1:3.2
 #BuildRequires:	python3-
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
 BuildRequires:	sphinx-pdg-3
 # or
@@ -51,7 +51,7 @@ Dokumentacja API modułu Pythona %{module}.
 %setup -q -n %{module}-%{version}
 
 %build
-%{__python3} -m build --wheel --no-isolation --outdir build-3
+%py3_build_pyproject
 
 %if %{with tests}
 # use explicit plugins list for reliable builds (delete PYTEST_PLUGINS if empty)
@@ -73,7 +73,7 @@ rm -rf docs/_build/html/_sources
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python3} -m installer --destdir=$RPM_BUILD_ROOT build-3/*.whl
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
