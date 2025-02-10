@@ -1,6 +1,6 @@
 # Conditional build:
 %bcond_without	doc	# API documentation
-%bcond_without	tests	# unit tests
+%bcond_with		tests	# unit tests
 
 %define		module	pyproject_hooks
 Summary:	Wrappers to call pyproject.toml-based build backend hooks
@@ -22,10 +22,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
 BuildRequires:	sphinx-pdg-3
-# or
-BuildRequires:	python3-tox
 %endif
-# replace with other requires if defined in setup.py
 Requires:	python3-modules >= 1:3.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -61,13 +58,8 @@ PYTEST_PLUGINS= \
 %endif
 
 %if %{with doc}
-%{__make} -C docs html \
-	SPHINXBUILD=sphinx-build-3
+sphinx-build-3 -b html docs docs/_build/html
 rm -rf docs/_build/html/_sources
-
-# or
-
-%{_bindir}/tox -e docs
 %endif
 
 %install
