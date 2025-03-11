@@ -1,6 +1,10 @@
 # Conditional build:
 %bcond_without	doc	# API documentation
-%bcond_with		tests	# unit tests
+%bcond_with	tests	# unit tests
+
+%ifarch x32
+%undefine	with_doc
+%endif
 
 %define		module	pyproject_hooks
 Summary:	Wrappers to call pyproject.toml-based build backend hooks
