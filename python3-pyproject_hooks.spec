@@ -10,7 +10,7 @@
 Summary:	Wrappers to call pyproject.toml-based build backend hooks
 Name:		python3-%{module}
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries/Python
 Source0:	https://pypi.debian.net/pyproject_hooks/%{module}-%{version}.tar.gz
