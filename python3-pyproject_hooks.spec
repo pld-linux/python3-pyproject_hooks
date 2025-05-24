@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	doc	# API documentation
 %bcond_with	tests	# unit tests
@@ -8,6 +9,7 @@
 
 %define		module	pyproject_hooks
 Summary:	Wrappers to call pyproject.toml-based build backend hooks
+Summary(pl.UTF-8):	Opakowanie do wywoływania uchwytów backendów budowania opartych na pyproject.toml
 Name:		python3-%{module}
 Version:	1.2.0
 Release:	3
@@ -37,6 +39,12 @@ pyproject.toml-based project. It provides the basic functionality to
 help write tooling that generates distribution files from Python
 projects.
 
+%description -l pl.UTF-8
+Ten pakiet zawiera niskopoziomową bibliotekę do wywoływania backendów
+budujących w projektach opartych na pyproject.toml. Zapewnia
+podstawową funkcjonalność ułatwiającą pisanie narzędzi generujących
+pliki dystrybucji z projektów w Pythonie.
+
 %package apidocs
 Summary:	API documentation for Python %{module} module
 Summary(pl.UTF-8):	Dokumentacja API modułu Pythona %{module}
@@ -55,9 +63,7 @@ Dokumentacja API modułu Pythona %{module}.
 %py3_build_pyproject
 
 %if %{with tests}
-# use explicit plugins list for reliable builds (delete PYTEST_PLUGINS if empty)
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
-PYTEST_PLUGINS= \
 %{__python3} -m pytest tests
 %endif
 
