@@ -19,17 +19,21 @@ Source0:	https://pypi.debian.net/pyproject_hooks/%{module}-%{version}.tar.gz
 # Source0-md5:	ed3dd1b984339e83e35f676d7169c192
 URL:		https://pypi.org/project/pyproject-hooks/
 BuildRequires:	python3-build
+BuildRequires:	python3-flit_core >= 3.2
+BuildRequires:	python3-flit_core < 4
 BuildRequires:	python3-installer
-BuildRequires:	python3-modules >= 1:3.2
+BuildRequires:	python3-modules >= 1:3.7
 %if %{with tests}
-#BuildRequires:	python3-
+BuildRequires:	python3-pytest
+BuildRequires:	python3-testpath
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
+BuildRequires:	python3-furo
 BuildRequires:	sphinx-pdg-3
 %endif
-Requires:	python3-modules >= 1:3.2
+Requires:	python3-modules >= 1:3.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -82,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.rst
+%doc LICENSE README.rst
 %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/%{module}-%{version}.dist-info
 
