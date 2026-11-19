@@ -11,12 +11,12 @@
 Summary:	Wrappers to call pyproject.toml-based build backend hooks
 Summary(pl.UTF-8):	Opakowanie do wywoływania uchwytów backendów budowania opartych na pyproject.toml
 Name:		python3-%{module}
-Version:	1.2.0
-Release:	3
+Version:	1.3.3
+Release:	1
 License:	MIT
 Group:		Libraries/Python
 Source0:	https://pypi.debian.net/pyproject_hooks/%{module}-%{version}.tar.gz
-# Source0-md5:	ed3dd1b984339e83e35f676d7169c192
+# Source0-md5:	4946aadbb25ac57019c431257e910583
 URL:		https://pypi.org/project/pyproject-hooks/
 BuildRequires:	python3-build
 BuildRequires:	python3-flit_core >= 3.2
